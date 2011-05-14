@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="download_url" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://www.skype.com/go/getskype</Value>
+      <Value Profile="(Default)">U'r URL HERE</Value>
     </Setting>
     <Setting Name="download_file" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">skype_setup.exe</Value>
+      <Value Profile="(Default)">U'r FILENAME HERE</Value>
     </Setting>
   </Settings>
 </SettingsFile>
