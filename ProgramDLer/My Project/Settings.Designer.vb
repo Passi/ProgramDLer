@@ -53,24 +53,6 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("http://www.skype.com/go/getskype")>  _
-        Public ReadOnly Property download_url() As String
-            Get
-                Return CType(Me("download_url"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("skype_setup.exe")>  _
-        Public ReadOnly Property download_file() As String
-            Get
-                Return CType(Me("download_file"),String)
-            End Get
-        End Property
     End Class
 End Namespace
 
