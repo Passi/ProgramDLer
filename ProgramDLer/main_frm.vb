@@ -2,19 +2,18 @@
 Public Class main_frm
     Private Source As String = ""
     Private File As String = ""
-    Private rev As String = My.Application.Info.Version.Revision
     Private WithEvents httpclient As WebClient
 
     Private Sub main_frm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If My.Application.CommandLineArgs.Contains("-test") Then
-            MsgBox("ProgramDLer r" + rev + " funtkioniert! Klicke auf OK, um fortzufahren.")
+            MsgBox("ProgramDLer funtkioniert! Klicke auf OK, um fortzufahren.")
         End If
         Try
-            Me.Text = "ProgramDLer r" + rev + " - " + File
-            Label1.Text = "ProgramDLer r" + rev + " ... Initialization"
+            Me.Text = "ProgramDLer - " + File
+            Label1.Text = "ProgramDLer ... Initialization"
             httpclient = New WebClient
 
-            httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".download" + rev.ToString)
+            httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".pdown")
 
             ProgressBar1.Value = 0
             ProgressBar1.Maximum = 100
@@ -26,7 +25,7 @@ Public Class main_frm
 
     Private Sub httpclient_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles httpclient.DownloadFileCompleted
         Try
-            IO.File.Move(File.ToString & ".download" & rev.ToString, File)
+            IO.File.Move(File.ToString & ".pdown", File)
             Dim p As New Process
             p.StartInfo.FileName = File
             p.Start()
