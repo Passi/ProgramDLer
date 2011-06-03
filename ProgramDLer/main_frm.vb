@@ -1,19 +1,20 @@
 ﻿Imports System.Net
 Public Class main_frm
-    Private Source As String = ""
-    Private File As String = ""
+    Private Source As String = "http://ftp.hp.com/pub/softlib/software11/COL30219/al-75052-1/AIO_CDB_NonNet_Full_Win_WW_130_141.exe"
+    Private File As String = "AIO_CDB_NonNet_Full_Win_WW_130_141.exe"
+    Private rev As String = My.Application.Info.Version.Revision
     Private WithEvents httpclient As WebClient
 
     Private Sub main_frm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If My.Application.CommandLineArgs.Contains("-test") Then
-            MsgBox("ProgramDLer v4 funtkioniert! Klicke auf OK, um fortzufahren.")
+            MsgBox("ProgramDLer r" + rev + " funtkioniert! Klicke auf OK, um fortzufahren.")
         End If
         Try
-            Me.Text = "ProgramDLer v4 - " + File
-            Label1.Text = "ProgramDLer v4 ... Initialization"
+            Me.Text = "ProgramDLer r" + rev + " - " + File
+            Label1.Text = "ProgramDLer r" + rev + " ... Initialization"
             httpclient = New WebClient
 
-            httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".programdler")
+            httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".download" + rev.ToString)
 
             ProgressBar1.Value = 0
             ProgressBar1.Maximum = 100
@@ -25,7 +26,7 @@ Public Class main_frm
 
     Private Sub httpclient_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles httpclient.DownloadFileCompleted
         Try
-            IO.File.Move(File.ToString & ".programdler", File)
+            IO.File.Move(File.ToString & ".download" & rev.ToString, File)
             Dim p As New Process
             p.StartInfo.FileName = File
             p.Start()
