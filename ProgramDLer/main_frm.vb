@@ -1,7 +1,7 @@
 ﻿Imports System.Net
 Public Class main_frm
-    Private Source As String = "http://ftp.hp.com/pub/softlib/software11/COL30219/al-75052-1/AIO_CDB_NonNet_Full_Win_WW_130_141.exe"
-    Private File As String = "AIO_CDB_NonNet_Full_Win_WW_130_141.exe"
+    Private Source As String = ""
+    Private File As String = ""
     Private rev As String = My.Application.Info.Version.Revision
     Private WithEvents httpclient As WebClient
 
