@@ -3,12 +3,16 @@ Public Class main_frm
     Private Source As String = ""
     Private File As String = ""
     Private WithEvents httpclient As WebClient
+    Private speed As String = "0"
+    Dim sbytes As String = "0"
+    Dim ebytes As String = "0"
 
     Private Sub main_frm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If My.Application.CommandLineArgs.Contains("-test") Then
             MsgBox("ProgramDLer funtkioniert! Klicke auf OK, um fortzufahren.")
         End If
         Try
+            Timer1.Enabled = True
             Me.Text = "ProgramDLer - " + File
             Label1.Text = "ProgramDLer ... Initialization"
             httpclient = New WebClient
@@ -44,10 +48,16 @@ Public Class main_frm
             Dim Totalmbytes As Long = Totalbytes / 1024
             Dim Mbytes As Long = Bytes / 1024
 
-            Label1.Text = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & "MB von " & Totalmbytes.ToString & "MB) (" & e.ProgressPercentage & "%)"
+            sbytes = Bytes.ToString
+            Label1.Text = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & " MB von " & Totalmbytes.ToString & " MB) (" & e.ProgressPercentage & "%) (" & speed.ToString & " KB/s)"
         Catch ex As Exception
             MsgBox(ex.Message)
             Me.Close()
         End Try
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        speed = sbytes.ToString - ebytes.ToString
+        ebytes = sbytes.ToString
     End Sub
 End Class
