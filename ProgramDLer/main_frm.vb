@@ -13,8 +13,8 @@ Public Class main_frm
             NotifyIcon1.Visible = True
             Timer1.Enabled = True
             Me.Text = "ProgramDLer - " + File
-            Label1.Text = "ProgramDLer ... Initialization"
-            NotifyIcon1.BalloonTipText = "ProgramDLer ... Initialization"
+            Label1.Text = "Push image to start download"
+            NotifyIcon1.BalloonTipText = "Push image to start download"
             httpclient = New WebClient
 
             ProgressBar1.Value = 0
@@ -45,9 +45,6 @@ Public Class main_frm
             sbytes = Bytes.ToString
             Label1.Text = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & " MB von " & Totalmbytes.ToString & " MB) (" & e.ProgressPercentage & "%) (" & speed.ToString & " KB/s)"
             NotifyIcon1.BalloonTipText = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & " MB von " & Totalmbytes.ToString & " MB) (" & e.ProgressPercentage & "%) (" & speed.ToString & " KB/s)"
-            If Me.Visible = False Then
-                NotifyIcon1.ShowBalloonTip(5)
-            End If
         Catch ex As Exception
             MsgBox(ex.Message)
             Me.Close()
