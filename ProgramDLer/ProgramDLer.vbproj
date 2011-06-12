@@ -16,6 +16,8 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <PublishUrl>../public/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
@@ -35,8 +37,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetZone>LocalIntranet</TargetZone>
-    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -74,7 +74,7 @@
   <PropertyGroup>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>index.ico</ApplicationIcon>
+    <ApplicationIcon>download.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>3AD71A6693E08A31B70B4D1B575B3FB57B1813B9</ManifestCertificateThumbprint>
@@ -162,6 +162,7 @@
     <None Include="My Project\VisualBasic" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="download.ico" />
     <Content Include="index.ico" />
   </ItemGroup>
   <ItemGroup>
