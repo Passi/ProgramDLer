@@ -65,6 +65,7 @@ Public Class main_frm
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Button1.Text = "Downloading " & File.ToString & "..."
         If ProgressBar1.Value = "0" Then
             Try
                 httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".pdown")
