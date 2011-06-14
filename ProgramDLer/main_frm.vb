@@ -48,7 +48,7 @@ Public Class main_frm
             Dim Totalmbytes As Long = Totalbytes / 1024
             Dim Mbytes As Long = Bytes / 1024
             sbytes = Bytes.ToString
-            Label1.Text = "Size: " & Totalbytes.ToString & " KB / " & Totalmbytes.ToString & " MB"
+            Label1.Text = "Size: " & Totalmbytes.ToString & " MB"
             Label2.Text = "Downloaded: " & e.ProgressPercentage & "%"
             Label3.Text = "Speed: " & speed.ToString & " KB/s"
             Label4.Text = "Status: " & status.ToString
@@ -90,7 +90,7 @@ Public Class main_frm
                 IO.File.Delete(File.ToString)
                 ProgressBar1.Value = "0"
                 Label1.Text = "Size: 0 KB / 0 MB"
-                Label2.Text = "Percentage: 0%"
+                Label2.Text = "Downloaded: 0%"
                 Label3.Text = "Speed: 0 KB/s"
                 Label4.Text = "Status: idle"
             Catch ex As Exception
