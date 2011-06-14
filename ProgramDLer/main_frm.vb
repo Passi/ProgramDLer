@@ -6,15 +6,15 @@ Public Class main_frm
     Private speed As String = "0"
     Dim sbytes As String = "0"
     Dim ebytes As String = "0"
+    Dim time As String = "0"
+    Dim ttime As String = "0"
 
     Private Sub main_frm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            Button1.Text = File.ToString
             IO.File.Delete(File)
             NotifyIcon1.Visible = True
             Timer1.Enabled = True
-            Me.Text = "ProgramDLer - " + File
-            Label1.Text = "Push image to start download"
-            NotifyIcon1.BalloonTipText = "Push image to start download"
             httpclient = New WebClient
 
             ProgressBar1.Value = 0
@@ -41,10 +41,17 @@ Public Class main_frm
             Dim Bytes As Long = e.BytesReceived / 1024
             Dim Totalmbytes As Long = Totalbytes / 1024
             Dim Mbytes As Long = Bytes / 1024
-
+            If speed.ToString = "0" Then
+                ttime = "not able to calculate"
+            Else
+                time = (Totalbytes.ToString - Bytes.ToString) / speed.ToString
+                ttime = time.ToString / 60
+            End If
             sbytes = Bytes.ToString
-            Label1.Text = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & " MB von " & Totalmbytes.ToString & " MB) (" & e.ProgressPercentage & "%) (" & speed.ToString & " KB/s)"
-            NotifyIcon1.BalloonTipText = Bytes.ToString & " KB von " & Totalbytes.ToString & " KB (" & Mbytes.ToString & " MB von " & Totalmbytes.ToString & " MB) (" & e.ProgressPercentage & "%) (" & speed.ToString & " KB/s)"
+            Label1.Text = "Size: " & Totalbytes.ToString & " KB / " & Totalmbytes.ToString & " MB"
+            Label2.Text = "Downloaded: " & e.ProgressPercentage & "%"
+            Label3.Text = "Speed: " & speed.ToString & " KB/s"
+            Label4.Text = "Time: " & ttime.ToString & " minutes"
         Catch ex As Exception
             MsgBox(ex.Message)
             Me.Close()
@@ -56,7 +63,7 @@ Public Class main_frm
         ebytes = sbytes.ToString
     End Sub
 
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If ProgressBar1.Value = "0" Then
             Try
                 httpclient.DownloadFileAsync(New Uri(Source), File.ToString & ".pdown")
@@ -82,9 +89,5 @@ Public Class main_frm
         ElseIf Me.Visible = False Then
             Me.Show()
         End If
-    End Sub
-
-    Private Sub NotifyIcon1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles NotifyIcon1.MouseClick
-        NotifyIcon1.ShowBalloonTip(5)
     End Sub
 End Class
