@@ -78,6 +78,8 @@ Public Class main_frm
                 Dim p As New Process
                 p.StartInfo.FileName = File
                 p.Start()
+                NotifyIcon1.Visible = False
+                Me.Close()
             Catch ex As Exception
                 MsgBox(ex.Message)
                 Me.Close()
