@@ -11,7 +11,7 @@ Public Class main_frm
 
     Private Sub main_frm_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Button1.Text = File.ToString
+            Button1.Text = "Download " & File.ToString
             IO.File.Delete(File)
             NotifyIcon1.Visible = True
             Timer1.Enabled = True
@@ -28,6 +28,7 @@ Public Class main_frm
     Private Sub httpclient_DownloadFileCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.AsyncCompletedEventArgs) Handles httpclient.DownloadFileCompleted
         Try
             IO.File.Move(File.ToString & ".pdown", File)
+            Button1.Text = "Open " & File.ToString
         Catch ex As Exception
             MsgBox(ex.Message)
             Me.Close()
