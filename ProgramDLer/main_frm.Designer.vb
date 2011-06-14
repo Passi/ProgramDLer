@@ -84,9 +84,9 @@ Partial Class main_frm
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(253, 292)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 13)
+        Me.Label4.Size = New System.Drawing.Size(59, 13)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Time:  0 minutes"
+        Me.Label4.Text = "Status: idle"
         '
         'Button1
         '
