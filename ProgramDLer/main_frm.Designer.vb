@@ -84,12 +84,13 @@ Partial Class main_frm
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(253, 292)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(59, 13)
+        Me.Label4.Size = New System.Drawing.Size(81, 13)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Status: idle"
+        Me.Label4.Text = "Time: 0 minutes"
         '
         'Button1
         '
+        Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.Location = New System.Drawing.Point(3, 26)
